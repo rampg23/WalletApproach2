@@ -15,11 +15,5 @@ public class Money {
         return currency.getRupeeConvertion() * amount;
     }
 
-    public static double computeTotalAmount(ArrayList<Money> wallet) {
-        for(Money money:wallet){
-            totalAmount+=money.amount;
-        }
-        return totalAmount;
-    }
 
 }

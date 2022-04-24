@@ -2,30 +2,37 @@ package com.thoughtworks.Wallet;
 
 import java.util.ArrayList;
 
+import static com.thoughtworks.Wallet.Currency.RUPEE;
+
 public class Wallet {
     private final ArrayList<Money> wallet;
     private double balance;
-
+    private ArrayList<Transaction> transactionHistory = new ArrayList<>();
     public Wallet() {
         this.wallet = new ArrayList<>();
     }
 
-    public void add(Money money) {
+    public void add(double amount, Currency currency) {
+        Money money = new Money(amount,currency);
         wallet.add(money);
+        transactionHistory.add(new Transaction(amount, currency,true,false));
+        balance+=amount;
     }
 
     public double viewBalance() {
-        balance = Money.computeTotalAmount(wallet);
         return balance;
+    }
 
+    public void showTransactionDetails(){
+        for(Transaction t:transactionHistory){
+            System.out.println(t);
+        }
     }
 
     public static void main(String[] args) {
         Wallet wallet = new Wallet();
-        Money money = new Money(2, Currency.RUPEE);
-        Money money1 = new Money(3, Currency.DOLLAR);
-        wallet.add(money);
-        wallet.add(money1);
+        wallet.add(1, RUPEE);
         System.out.println(wallet.viewBalance());
+        wallet.showTransactionDetails();
     }
 }
