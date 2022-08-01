@@ -1,6 +1,7 @@
 package com.thoughtworks.Wallet;
 
 import java.util.ArrayList;
+https://admin:admin@the-internet.herokuapp.com/basic_auth
 
 public class Money {
     private final double amount;
